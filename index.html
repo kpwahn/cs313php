@@ -1,8 +1,45 @@
 <!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-<p>Hello World</p>  
-</body>
+<html ng-app="professionalWrittingSite" >
+  <head>
+    <!-- SCROLLS -->
+      <!-- load bootstrap and fontawesome via CDN -->
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+      <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+      <link rel="stylesheet" type="text/css" href="myStyle.css">
+      <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.js"></script>
+      <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+    
+      <!-- SPELLS -->
+      <!-- load angular and angular route via CDN -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+          <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+      <script src="script.js"></script>
+  </head>
+  
+   <body ng-controller="mainController as main" style="background-image: url('https://lh4.googleusercontent.com/-zkZXFLIOCrE/U0lAuxifrrI/AAAAAAAAAIA/RfFUQBVOv2Y/s0-d/quotes-typography-hank-serie-Californication-typewriters-_19276-33.jpg'); background-attachment: fixed">
+  <!-- HEADER AND NAVBAR -->
+        <header>
+            <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/" style="font-size:35px">Kendall's Homepage</a>
+                </div>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+                    <li><a href="#contact"><i class="fa fa-comment"></i> Contact</a></li>
+                </ul>
+            </div>
+            </nav>
+        </header>
+     <!-- MAIN CONTENT AND INJECTED VIEWS -->
+        <div id="main">
+            <!-- angular templating -->
+            <!-- this is where content will be injected -->
+          <div ng-view></div>
+        </div>
+    </body>
+    
 </html>

@@ -1,0 +1,16 @@
+<div class="jumbotron text-center container" style="background-color:transparent">
+  <h1>Creative Writing</h1>
+
+<!-- <img style="width:500px;height:500px;" ng-src="{{writer.profilePicture}}"/> -->
+  
+<ul class="img-thumbnails clearfix">
+  <li class="pull-left thumbnail" ng-repeat="image in writer.images"> <a href="{{writer.pdfLinks[$index]}}"> 
+  <img style="height:250px;width:350px" ng-src="{{image}}"/> </a> <div class="caption">
+        <h3>{{writer.paperTitles[$index]}}</h3>
+        <p style="font-size: 16px"> {{writer.paperTypes[$index]}}</p>
+        <p><a class="btn btn-primary" role="button" href="{{writer.pdfLinks[$index]}}">Read More</a> </p>
+      </div>
+  </li>
+</ul>
+  
+</div>
