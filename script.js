@@ -33,7 +33,7 @@
       
        $scope.changeIndex = function(index) {
     $scope.index = index;
-    }
+    } 
        
     });
 
