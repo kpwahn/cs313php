@@ -3,13 +3,10 @@
   <h1>Hi, My Name Is Kendall Wahnschaffe</h1>
   <p style="font-size:16px"> and I like to code.</p>
   
-  <img src="https://s-media-cache-ak0.pinimg.com/originals/b8/ca/2f/b8ca2f76b40cc5c321c6a7d7e421dabf.jpg" style="width:100%;height:100%">
+  <img src="{{person.images[index]}}" style="height:750px;width:100%">
   
-  <div ng-repeat="image in person.images"> <a href ng-click=""> <!--index of loop--> 
+  <div ng-repeat="image in person.images"> <a href ng-click="changeIndex($index)"> <!--index of loop--> 
   <img class="text-center img-thumbnail" style="height:100px;width:100px;float:left" ng-src="{{image}}" alt="Photos of the phone" /></a>
   </div>
-
-  
-  <p style="font-size:16px"> <br /> {{person.aboutMe}}</p>
   
 </div>
