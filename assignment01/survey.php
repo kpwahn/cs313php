@@ -1,15 +1,18 @@
 <?php
-$fav = "";
+$favChar = "";
+$favBook = "";
 if (empty($_COOKIE["hasVisited"])) {
   //recieves what the user selected
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $fav = $_POST["character"];
+    $favChar = $_POST["character"];
+    $favBook = $_POST["book"];
+    
   }
   
   //reads in the file
   $file = fopen("survey.txt", "r+");
-  $nl = "";
   
+  //Characters
   $snape = fgets($file);
   $hp = fgets($file);
   $fred = fgets($file);
@@ -17,9 +20,18 @@ if (empty($_COOKIE["hasVisited"])) {
   $hagrid = fgets($file);
   $mc = fgets($file);
   $dumbledore = fgets($file);
-
+  
+  //Books
+  $sorcerer = fgets($file);
+  $chamber = fgets($file);
+  $prisioner = fgets($file);
+  $goblet = fgets($file);
+  $order = fgets($file);
+  $prince = fgets($file);
+  $death = fgets($file);
+  
   //increments the given answer
-  switch ($fav) {
+  switch ($favChar) {
   case "0":  
   $snape+= 1;  
   break;
@@ -43,21 +55,46 @@ if (empty($_COOKIE["hasVisited"])) {
   break;
   }
   
+  switch ($favBook) {
+  case "7":  
+  $sorcerer+= 1;  
+  break;
+  case "8":
+  $chamber+= 1;
+  break;
+  case "9":
+  $prisioner+= 1;
+  break;
+  case "10":
+  $goblet+= 1;
+  break;
+  case "11":
+  $order+= 1;
+  break;
+  case "12":
+  $prince+= 1;
+  break;
+  case "13":
+  $death+= 1 ; 
+  break;
+  }
+  
   //write back out to the file
   $file = fopen("survey.txt", "w");
-  /*
-  if ($fav == 0) {
-    fwrite($file, "$snape" . PHP_EOL);
-  } else {
-    fwrite($file, "$snape");
-  }*/
-  fwrite($file, "$snape" . ($fav == 0 ? PHP_EOL : ""));
-  fwrite($file, "$hp" . ($fav == 1 ? PHP_EOL : ""));
-  fwrite($file, "$fred" . ($fav == 2 ? PHP_EOL : ""));
-  fwrite($file, "$dobby" . ($fav == 3 ? PHP_EOL : ""));
-  fwrite($file, "$hagrid" . ($fav == 4 ? PHP_EOL : ""));
-  fwrite($file, "$mc" . ($fav == 5 ? PHP_EOL : ""));
-  fwrite($file, "$dumbledore" . ($fav == 6 ? PHP_EOL : ""));
+  fwrite($file, "$snape" . ($favChar == 0 ? PHP_EOL : ""));
+  fwrite($file, "$hp" . ($favChar == 1 ? PHP_EOL : ""));
+  fwrite($file, "$fred" . ($favChar == 2 ? PHP_EOL : ""));
+  fwrite($file, "$dobby" . ($favChar == 3 ? PHP_EOL : ""));
+  fwrite($file, "$hagrid" . ($favChar == 4 ? PHP_EOL : ""));
+  fwrite($file, "$mc" . ($favChar == 5 ? PHP_EOL : ""));
+  fwrite($file, "$dumbledore" . ($favChar == 6 ? PHP_EOL : ""));
+  fwrite($file, "$sorcerer" . ($favBook == 7 ? PHP_EOL : ""));
+  fwrite($file, "$chamber" . ($favBook == 8 ? PHP_EOL : ""));
+  fwrite($file, "$prisioner" . ($favBook == 9 ? PHP_EOL : ""));
+  fwrite($file, "$goblet" . ($favBook == 10 ? PHP_EOL : ""));
+  fwrite($file, "$order" . ($favBook == 11 ? PHP_EOL : ""));
+  fwrite($file, "$prince" . ($favBook == 12 ? PHP_EOL : ""));
+  fwrite($file, "$death" . ($favBook == 13 ? PHP_EOL : ""));
   fclose($file);
 
   //write the cookie so it won't fail again
@@ -70,9 +107,9 @@ if (empty($_COOKIE["hasVisited"])) {
 <!DOCTYPE html>
 <html>
 <body>
-<table>
+<table border="1">
   <tr>
-  <th>Favorite Characters</th>
+  <th colspan="2">Favorite Characters</th>
   </tr>
   <tr>
   <td>Severus Snape</td>
@@ -100,6 +137,40 @@ if (empty($_COOKIE["hasVisited"])) {
   </tr>
   <tr>
   <td>Albus Percival Wulfric Brian Dumbledore</td>
+  <td><?php $snape = fgets($file); echo $snape; ?></td>
+  </tr>
+</table>
+  
+  <table border="1">
+  <tr>
+  <th colspan="2">Favorite Books</th>
+  </tr>
+  <tr>
+  <td>Sorcerer's Stone</td>
+  <td><?php $snape = fgets($file); echo $snape; ?></td>
+  </tr>
+  <tr>
+  <td>Chamber Of Secrets</td>
+  <td><?php $snape = fgets($file); echo $snape; ?></td>
+  </tr>
+  <tr>
+  <td>Prisioner Of Azkaban</td>
+  <td><?php $snape = fgets($file); echo $snape; ?></td>
+  </tr>
+  <tr>
+  <td>Goblet Of Fire</td>
+  <td><?php $snape = fgets($file); echo $snape; ?></td>
+  </tr>
+  <tr>
+  <td>Order Of The Pheonix</td>
+  <td><?php $snape = fgets($file); echo $snape; ?></td>
+  </tr>
+  <tr>
+  <td>Half-Blood Prince </td>
+  <td><?php $snape = fgets($file); echo $snape; ?></td>
+  </tr>
+  <tr>
+  <td>Deathly Hollows</td>
   <td><?php $snape = fgets($file); echo $snape; ?></td>
   </tr>
 </table>
