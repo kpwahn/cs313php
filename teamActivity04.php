@@ -1,6 +1,6 @@
 <?php
 
-$server = '127.0.0.1';
+$server = '$OPENSHIFT_MYSQL_DB_HOST'
 $database = 'scriptures';
 $username = 'adminSPemDYX';
 $password = 'tnefpMRrBe7g';
