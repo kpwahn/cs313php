@@ -1,5 +1,6 @@
 <?php 
 
+    $check = getenv('OPENSHIFT_MYSQL_DB_HOST');
     define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST'));
     define('DB_PORT',getenv('OPENSHIFT_MYSQL_DB_PORT')); 
     define('DB_USER',getenv('OPENSHIFT_MYSQL_DB_USERNAME'));
@@ -30,7 +31,7 @@
         // PDO is designed to provide a flexible interface between PHP and many 
         // different types of database servers.  For more information on PDO: 
         // http://us2.php.net/manual/en/class.pdo.php 
-      if (DB_HOST === null || DB_HOST == "") {
+      if ($check === null || $check == "") {
         $db = new PDO("mysql:host={$host};dbname={$dbname};charset=utf8", $username, $password, $options);
       }else {
         $db = new PDO("mysql:host=" . DB_HOST . ";dbname={$dbname};charset=utf8", DB_USER, DB_PASS, $options); 
