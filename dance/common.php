@@ -30,7 +30,7 @@
         // PDO is designed to provide a flexible interface between PHP and many 
         // different types of database servers.  For more information on PDO: 
         // http://us2.php.net/manual/en/class.pdo.php 
-        $db = new PDO("mysql:host={DB_HOST};dbname={$dbname};charset=utf8", DB_USER, DB_PASS, $options); 
+        $db = new PDO("mysql:host=" . DB_HOST . ";dbname={$dbname};charset=utf8", DB_USER, DB_PASS, $options); 
     } 
     catch(PDOException $ex) 
     { 
