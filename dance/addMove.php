@@ -84,7 +84,7 @@ $statement->execute();
   
   echo $move_id;
 $statement1->execute();
-//echo "Successfully added to database<br/>";
+echo "Successfully added to database<br/>";
 
   //insert into user_move_table(user_id, move_id) values (:user_id, :move_id)
 } 

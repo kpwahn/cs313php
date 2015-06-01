@@ -92,14 +92,15 @@
         // http://en.wikipedia.org/wiki/Salt_%28cryptography%29 
         // http://en.wikipedia.org/wiki/Brute-force_attack 
         // http://en.wikipedia.org/wiki/Rainbow_table 
-        //$salt = dechex(mt_rand(0, 2147483647)) . dechex(mt_rand(0, 2147483647)); 
+        //$salt = dechex(mt_rand(0, 2147483647)) . dechex(mt_rand(0, 2147483647));  
          
         // This hashes the password with the salt so that it can be stored securely 
         // in your database.  The output of this next statement is a 64 byte hex 
         // string representing the 32 byte sha256 hash of the password.  The original
         // password cannot be recovered from the hash.  For more information: 
         // http://en.wikipedia.org/wiki/Cryptographic_hash_function 
-        $password = $_POST['password'];
+        //$password = hash('sha256', $_POST['password'] . $salt); 
+        $password = $_POST["password"];
          
         // Next we hash the hash value 65536 more times.  The purpose of this is to 
         // protect against brute force attacks.  Now an attacker must compute the hash 65537 

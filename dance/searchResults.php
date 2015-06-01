@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $style_id = $row["style_id"];
       foreach($db->query("select * from move_table where style = '$style_id'") as $row1) {
       $url = $row1['url'];
-      echo $row1["move_name"] . ": <br /> <iframe width='854' height='510' src=\"$url\" frameborder='0' allowfullscreen></iframe>";
+      echo $row1["move_name"] . ": <br /> <iframe width='100%' height='500' src=\"$url\" frameborder='0' allowfullscreen></iframe><br />";
       }
     }   
   }
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     foreach($db->query("select * from move_table where move_name = '$move'") as $row2) {
       $url1 = $row2["url"];
-      echo $row2["move_name"] . ": <br /> <iframe width='854' height='510' src=\"$url1\" frameborder='0' allowfullscreen></iframe><br />";
+      echo $row2["move_name"] . ": <br /> <iframe width='400' height='500' src=\"$url1\" frameborder='0' allowfullscreen></iframe><br />";
   }
 }
 }

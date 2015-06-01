@@ -32,7 +32,7 @@ echo "<h2> Your Moves </h2> <br />";
       
       foreach ($db->query("select * from move_table where move_id = '$move_id'") as $row3) {
         $moveurl = $row3["url"];
-        echo $row3["move_name"] . ": <br /> <iframe width='854' height='510' src=\"$moveurl\" frameborder='0' allowfullscreen></iframe><br />";
+        echo $row3["move_name"] . ": <br /> <iframe width='100%' height='500' src=\"$moveurl\" frameborder='0' allowfullscreen></iframe><br />";
         
       }
     }  

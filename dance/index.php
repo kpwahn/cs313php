@@ -60,7 +60,7 @@
             //{ 
             //    $check_password = hash('sha256', $check_password . $row['salt']); 
             //} 
-             
+            
             if($_POST['password'] === $row['password']) 
             { 
                 // If they do, then we flip this to true 
