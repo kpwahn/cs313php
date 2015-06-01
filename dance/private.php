@@ -21,5 +21,6 @@
 ?> 
 Hello <?php echo htmlentities($_SESSION['user']['username'], ENT_QUOTES, 'UTF-8'); ?>, secret content!<br /> 
 <a href="dance.php">Search Database</a><br /> 
-<!--<a href="edit_account.php">Edit Account</a><br /> -->
+<a href="myMoves.php">Your Moves</a><br /> 
+<a href="addMove.php">Add a move</a><br />
 <a href="logout.php">Logout</a>

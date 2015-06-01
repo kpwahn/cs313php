@@ -18,31 +18,30 @@
      
     // We can display the user's username to them by reading it from the session array.  Remember that because 
     // a username is user submitted content we must use htmlentities on it before displaying it to the user. 
+    //use this to pull up only the moves of the specific user
+
+echo "<h2> Your Moves </h2> <br />";
+  $user = htmlentities($_SESSION['user']['username'], ENT_QUOTES, 'UTF-8');
+
+  foreach($db->query("select user_id from user_table where username = '$user' ") as $row) {
+    //echo $user . " is user_id: " . $row["user_id"];
+    $user_id = $row["user_id"];
+
+    foreach ($db->query("select move_id from user_move_table where user_id = '$user_id'") as $row1) {
+      $move_id = $row1["move_id"];
+      
+      foreach ($db->query("select * from move_table where move_id = '$move_id'") as $row3) {
+        $moveurl = $row3["url"];
+        echo $row3["move_name"] . ": <br /> <iframe width='854' height='510' src=\"$moveurl\" frameborder='0' allowfullscreen></iframe><br />";
+        
+      }
+    }  
+  }
 ?> 
 
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
 <body>
-  <h1>Dance Library</h1>
-  <br />
-  
-  <form action="searchResults.php" method="post">
-    Select your style: 
-    <select name="style">
-    <?php
-  foreach($db->query('select style from style_table') as $row) {
-    $style = $row["style"];
-    echo "<option value ='$style'>$style</option<br />";
-  }
-    ?>
-      
-    </select> <br /> <br />   
-    <input type="submit" value="Search"/>
-  </form>
-  <br />
-    <form action="searchResults.php" method="post">
-    Or search by move: <input type="text" name="move_name"/>
-    <input type="submit" value="Search"/>
-  </form>
+
 </body>
 </html>
