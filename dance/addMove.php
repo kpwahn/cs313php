@@ -23,25 +23,27 @@
 ?> 
 <!DOCTYPE html>
 <html>
-<body>
+<body  style="text-align:center">
+  <table align="center" border="1">
   <form action="<?php $_SERVER["PHP_SELF"];?>" method="post">
-    Select the style: 
-    <select name="style" required>
+    <tr><td>Select the style:</td>
+      <td><select name="style" required>
     <?php
   foreach($db->query('select style from style_table') as $row) {
     $style = $row["style"];
     echo "<option value ='$style' name='style[]'>$style</option<br />";
   }
     ?>
-    </select><br />
-    Name of the Move:
-    <input type="text" name="move_name" required/> <br />
-    YouTube EMBEDDED src:
-    <input type="text" name="url" required/> <br />  
-    <input type="submit" value="Search" required/>
+        </select></td> </tr>
+    <tr> <td>Name of the Move:</td>
+      <td><input type="text" name="move_name" required/> </td></tr>
+      <tr><td>YouTube EMBEDDED src:</td>
+        <td><input type="text" name="url" required/> </td> </tr>
+    <tr><td colspan="3" style="text-align: center"><input type="submit" value="Add" required/></td></tr>
 
 </form>  
-  
+  </table>
+  <a href="private.php">Go Back</a>
   <?php
 $search = "";
 
@@ -59,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $style_id = $row1["style_id"];
   }
   
-  echo "move_name: " . $move_name;
+  echo $move_name;
   //echo $move_id;
   
   
@@ -82,11 +84,10 @@ $statement->execute();
     $move_id = $row2["move_id"];
   }
   
-  echo $move_id;
 $statement1->execute();
-echo "Successfully added to database<br/>";
+echo " Successfully added to database<br/>";
 
-  //insert into user_move_table(user_id, move_id) values (:user_id, :move_id)
+//insert into user_move_table(user_id, move_id) values (:user_id, :move_id)
 } 
 ?>
 </body>

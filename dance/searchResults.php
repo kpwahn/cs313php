@@ -23,7 +23,7 @@
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  
+  echo "<a href='private.php'>Go Back</a><br/><br />";
   if (!empty($_POST["style"]) ) {
     //echo '<script type="text/javascript">alert("Searching by style"); </script>';
     $style = $_POST["style"];
@@ -40,9 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //echo '<script type="text/javascript">alert("Searching by name"); </script>';
     $move = $_POST["move_name"];
     
-    foreach($db->query("select * from move_table where move_name = '$move'") as $row2) {
+    foreach($db->query("select * from move_table where move_name LIKE '%$move%'") as $row2) {
       $url1 = $row2["url"];
-      echo $row2["move_name"] . ": <br /> <iframe width='400' height='500' src=\"$url1\" frameborder='0' allowfullscreen></iframe><br />";
+      echo $row2["move_name"] . ": <br /> <iframe width='100%' height='500' src=\"$url1\" frameborder='0' allowfullscreen></iframe><br /><br />";
   }
 }
 }
@@ -53,5 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html>
 <body>
+  <a href="private.php">Go Back</a>
 </body>
 </html>

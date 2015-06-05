@@ -19,8 +19,8 @@
     // We can display the user's username to them by reading it from the session array.  Remember that because 
     // a username is user submitted content we must use htmlentities on it before displaying it to the user. 
     //use this to pull up only the moves of the specific user
-
-echo "<h2> Your Moves </h2> <br />";
+echo "<a href='private.php'>Go Back</a><br/>";
+echo "<h2> Your Moves </h2>";
   $user = htmlentities($_SESSION['user']['username'], ENT_QUOTES, 'UTF-8');
 
   foreach($db->query("select user_id from user_table where username = '$user' ") as $row) {
@@ -32,16 +32,16 @@ echo "<h2> Your Moves </h2> <br />";
       
       foreach ($db->query("select * from move_table where move_id = '$move_id'") as $row3) {
         $moveurl = $row3["url"];
-        echo $row3["move_name"] . ": <br /> <iframe width='100%' height='500' src=\"$moveurl\" frameborder='0' allowfullscreen></iframe><br />";
+        echo $row3["move_name"] . ": <br /> <iframe width='100%' height='500' src=\"$moveurl\" frameborder='0' allowfullscreen></iframe><br /><br />";
         
       }
     }  
   }
+echo "<a href='private.php'>Go Back</a><br/>";
 ?> 
 
 <!DOCTYPE html>
 <html>
 <body>
-
 </body>
 </html>

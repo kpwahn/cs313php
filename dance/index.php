@@ -60,13 +60,19 @@
             //{ 
             //    $check_password = hash('sha256', $check_password . $row['salt']); 
             //} 
-            
-            if($_POST['password'] === $row['password']) 
+        
+          $user = $_POST["username"];
+          foreach ($db->query("select * from user_table where username = '$user';") as $row) {
+            $storedPassword = $row["password"];
+          }
+          
+            $password = $_POST["password"];
+            if(password_verify("$password", $storedPassword)) 
             { 
                 // If they do, then we flip this to true 
                 $login_ok = true; 
             } 
-        } 
+        }
          
         // If the user logged in successfully, then we send them to the private members-only page 
         // Otherwise, we display a login failed message and show the login form again
@@ -77,7 +83,7 @@
             // stored on the server-side, there is no reason to store sensitive values 
             // in it unless you have to.  Thus, it is best practice to remove these 
             // sensitive values first. 
-            unset($row['salt']); 
+            //unset($row['salt']); 
             unset($row['password']); 
              
             // This stores the user's data into the session at the index 'user'. 

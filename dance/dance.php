@@ -22,13 +22,15 @@
 
 <!DOCTYPE html> 
 <html>
-<body>
+<body style="text-align: center">
   <h1>Dance Library</h1>
   <br />
-  
+  <table border="1" align="center">
   <form action="searchResults.php" method="post">
-    Select your style: 
-    <select name="style">
+    <tr>
+      <td>Search By Style:</td>
+    
+    <td><select name="style">
     <?php
   foreach($db->query('select style from style_table') as $row) {
     $style = $row["style"];
@@ -36,13 +38,15 @@
   }
     ?>
       
-    </select> <br /> <br />   
-    <input type="submit" value="Search"/>
+      </select> </td>   
+      <td><input type="submit" value="Search"/></td> </tr>
   </form>
   <br />
     <form action="searchResults.php" method="post">
-    Or search by move: <input type="text" name="move_name"/>
-    <input type="submit" value="Search"/>
+      <tr><td>Search By Move: </td> <td><input type="text" name="move_name"/></td>
+        <td><input type="submit" value="Search"/></td></tr>
   </form>
+    </table>
+  <a href="private.php">Go Back</a>
 </body>
 </html>

@@ -100,8 +100,13 @@
         // password cannot be recovered from the hash.  For more information: 
         // http://en.wikipedia.org/wiki/Cryptographic_hash_function 
         //$password = hash('sha256', $_POST['password'] . $salt); 
+      
+        require 'password.php';
+        
         $password = $_POST["password"];
-         
+        $passwordHash = password_hash("$password", PASSWORD_DEFAULT);
+        
+        
         // Next we hash the hash value 65536 more times.  The purpose of this is to 
         // protect against brute force attacks.  Now an attacker must compute the hash 65537 
         // times for each guess they make against a password, whereas if the password
@@ -117,7 +122,7 @@
         // the salt (in its plaintext form; this is not a security risk). 
         $query_params = array( 
             ':username' => $_POST['username'], 
-            ':password' => $password
+            ':password' => $passwordHash
         ); 
          
         try 
