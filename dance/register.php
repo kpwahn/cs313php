@@ -104,7 +104,7 @@
         require 'password.php';
         
         $password = $_POST["password"];
-        $passwordHash = password_hash("$password", PASSWORD_DEFAULT);
+        //$passwordHash = password_hash("$password", PASSWORD_DEFAULT);
         
         
         // Next we hash the hash value 65536 more times.  The purpose of this is to 
@@ -122,7 +122,7 @@
         // the salt (in its plaintext form; this is not a security risk). 
         $query_params = array( 
             ':username' => $_POST['username'], 
-            ':password' => $passwordHash
+            ':password' => $password //':password' => $passwordHash
         ); 
          
         try 

@@ -67,7 +67,8 @@
           }
           
             $password = $_POST["password"];
-            if(password_verify("$password", $storedPassword)) 
+            //if(password_verify("$password", $storedPassword)) 
+          if ($password == $storedPassword)
             { 
                 // If they do, then we flip this to true 
                 $login_ok = true; 
