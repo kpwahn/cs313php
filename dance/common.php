@@ -35,7 +35,7 @@
           
         $db = new PDO("mysql:host={$host};dbname={$dbname};charset=utf8", $username, $password, $options);
       }else {
-          echo "<script>alert (\"js inside php\")</script>";
+          
         $db = new PDO("mysql:host=" . DB_HOST . ";dbname={$dbname};charset=utf8", DB_USER, DB_PASS, $options); 
       } 
     } 
